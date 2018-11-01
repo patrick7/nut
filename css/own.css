@@ -1,0 +1,17 @@
+table {
+	table-layout: fixed;
+}
+td {
+	width: 50%;
+}
+
+.container {
+	border-bottom: 1px dotted black;
+}
+.footer {
+	text-align: center;
+}
+.table .progress {
+	margin-bottom: 0px;
+}
+
