@@ -37,7 +37,7 @@ $fp = fsockopen($config['server'], $config['port'], $errno, $errstr, 30);
 if (!$fp) {
 	echo "$errstr ($errno)<br />\n";
 } else {
-	fwrite($fp, "LIST VAR ups\nLOGOUT\n");
+	fwrite($fp, "LIST VAR {$config['ups_name']}\nLOGOUT\n");
 	while (!feof($fp)) {
 		$line = trim(fgets($fp, 128));
 		if(substr($line, 0, 2) == 'OK' ) {
@@ -45,7 +45,7 @@ if (!$fp) {
 		}
 
 		/* Cut VAR ups */
-		$line = str_replace('VAR ups ', '', $line);
+		$line = str_replace("VAR {$config['ups_name']} ", '', $line);
 
 		/* Write ups data to array... */
 		$upsdata 	= explode(" ", $line, 2);
